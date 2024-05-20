@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CIFAR-10 Image Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Upload an image for CIFAR-10 prediction</h1>
+        <form action="/predict" method="post" enctype="multipart/form-data" class="mb-3">
+            <div class="form-group">
+                <input type="file" name="image" class="form-control-file" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        {% if prediction %}
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Prediction: {{ prediction }}</h4>
+                <img src="{{ img_path }}" alt="Uploaded Image" class="img-fluid">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
